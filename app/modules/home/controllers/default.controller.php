@@ -12,6 +12,18 @@ Class Home_Default_Controller {
     function main()
     {
         $data = array();
+
+        /* Add scripts and styles        
+        $js = array(
+            'home.js'
+        );
+        Registry::add('_SITE_JS', $js);
+        
+        $css = array(
+            'home.css'
+        );
+        Registry::add('_SITE_CSS', $css);
+        */
         
         // load models by module. better re-usability
         // modules/home/models/default.model.php
@@ -35,6 +47,17 @@ Class Home_Default_Controller {
                 'content' => $content
             )
         );
+        /* 
+            Alternatively
+            
+            Registry::addArray(
+                array(
+                    'view' => $view,
+                    'content' => $content
+                )
+            );
+            $layout = Loader::loadLayout('default');
+        */
         
         // return it. echoed in html/index.php 
         return $layout;
