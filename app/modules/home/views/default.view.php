@@ -1,0 +1,1 @@
+<p>default.model.php output: <?php echo $var; ?></p>
