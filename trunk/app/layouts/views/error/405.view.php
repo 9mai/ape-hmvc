@@ -1,0 +1,1 @@
+<h1>Error 405 - Method Not Allowed</h1>
