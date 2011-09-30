@@ -45,11 +45,11 @@ Class Home_Default_Controller {
                 'view' => $view,
                 'content' => $content
             ),
-            'default' /* default is the default. over-ride it here */
+            'default' /* default is the default. over-ride it here (eg: 2col, 3col, print, etc) */
         );
 
         /* 
-            Alternatively
+            Alternatively:
             
             Registry::addArray(
                 array(
