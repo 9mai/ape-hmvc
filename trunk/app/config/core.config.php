@@ -1,15 +1,17 @@
 <?php
 
 $core = array();
-$core['site_name'] = 'Sitename from core.config.php';
+$core['site_name'] = 'APE HMVC Framework';
 
-$core['encryption_salt'] = '8675309';
+$core['encryption_salt'] = 'xxxxxxxxxxxxx';
 
 
-// load confgd in loader class, check these, if anything, load em.
-$core['autoload']['helpers'] = array();
+// load config in loader class, check these, if anything, load em.
+$core['autoload']['helpers'] = array(
+ /* 'common' loads: /helpers/common.helper.php */
+);
 $core['autoload']['libraries'] = array(
-    /*array('test' => array('foo'=>'bar', 'faz' => 'bax'))*/
+    /*array('test' => array('foo'=>'bar', 'faz' => 'bax')) loads: libraries/test.php */
 );
 $core['autoload']['plugins'] = array();
 

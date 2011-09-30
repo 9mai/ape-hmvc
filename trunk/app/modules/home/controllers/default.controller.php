@@ -47,6 +47,7 @@ Class Home_Default_Controller {
                 'content' => $content
             )
         );
+
         /* 
             Alternatively
             

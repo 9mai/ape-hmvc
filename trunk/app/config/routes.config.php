@@ -1,4 +1,6 @@
 <?php
 // regex routing.
 $routes = array();
-//$routes['home/(.*)'] = 'index/$1';
+
+// Route everything to the home/default controller
+// $routes['(.+)'] = 'home/default';

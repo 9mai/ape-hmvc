@@ -10,23 +10,30 @@ if($headers = Registry::get('_SITE_HEADERS')){
 	}
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta http-equiv="content-language" content="en" />
-	<base href="<?php echo Loader::loadConfig('core', 'base_url'); ?>" />
-	<title><?php echo Registry::get('_SITE_TITLE', Loader::loadConfig('core',' site_name')); ?></title>
-	<style type="text/css">
-		html,body { margin:0; padding:0; background:#444;font:normal 1em Arial, Helvetica, sans-serif;}
-        div#container { margin: 40px auto 0 40px; width: 750px; }
-        #container-inner { background:#fff; padding:15px;-moz-border-radius: 10px; -webkit-border-radius: 10px; }
-        #test-content { border:2px solid #ddd; padding:10px; }
-        h2, h3 { font-size:1em; }
-        #test-content p { background:#efefef; padding:2px;}
-        hr { border:1px solid #444; background:#444; height:1px; }
-	</style>
-	<?php
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><?php echo Registry::get('_SITE_TITLE', Loader::loadConfig('core', 'site_name')); ?></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href="<?php echo Loader::loadConfig('core', 'base_url'); ?>" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+
+    <?php
         if($js_external = Registry::get('_SITE_JS_EXTERNAL')){
             foreach($js_external as $js){
                 echo '<script src="'.$js.'" type="text/javascript"></script>'."\n";
@@ -50,13 +57,36 @@ if($headers = Registry::get('_SITE_HEADERS')){
             }
         }
         unset($headers, $js_external, $js_inline, $scripts, $styles);
-        ?>
-</head>
-<body>
-  
-  <div id="container">
-      <div id="container-inner">
-          <h1>This is the default layout.</h1>
+    ?>
+    
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- Le fav and touch icons
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">Project name</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>This is the default layout.</h1>
           <p>You can have as many layouts as you want. Think of them as view containers. See the docs for more examples.</p>
           <div id="test-content">
               <h2>View Data:</h2>
@@ -70,7 +100,31 @@ if($headers = Registry::get('_SITE_HEADERS')){
           
           <p><em>/app/layouts/default.layout.php</em></p>
       </div>
-  </div>
-  
-</body>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span6">
+          <h2>Heading</h2>
+          <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span5">
+          <h2>Heading</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span5">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Company 2011 <!--debug--></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
 </html>
