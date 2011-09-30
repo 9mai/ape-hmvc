@@ -8,7 +8,7 @@ function aCrypt($str, $decrypt=false, $salt = null)
     $iv_size = mcrypt_get_iv_size(MCRYPT_3DES, MCRYPT_MODE_ECB);
     $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);    
     $key_size = mcrypt_get_key_size(MCRYPT_3DES, MCRYPT_MODE_ECB);
-    $key = substr(ENCRYPT_KEY, 0, $key_size);
+    $key = substr($salt, 0, $key_size);
 
     if ($decrypt) {
         $return = mcrypt_decrypt(MCRYPT_3DES, $key, base64_decode($str), MCRYPT_MODE_ECB, $iv);
