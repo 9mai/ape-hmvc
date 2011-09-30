@@ -29,10 +29,10 @@ Abstract Class Registry extends registryInterface {
         return self::$registry;
     }
     
-    public static function add($key, &$value, $replace = true)
+    public static function add($key, $value, $replace = true)
     {
         if (self::exists($key) AND $replace == false) {
-            trigger_error($key.' already set. Use replace method.', E_USER_ERROR);
+            trigger_error($key.' already set. Use replace method.', E_USER_WARNING);
             return false;
         }
 
@@ -40,7 +40,18 @@ Abstract Class Registry extends registryInterface {
         return true;
     }
     
-    public static function replace($key, &$value)
+    public static function addArray($arr, $replace = true)
+    {
+        if (is_array($arr)) {
+            foreach ($arr as $k=>$v) {
+                self::add($k, $v, $replace);
+            }
+        }
+        
+        return true;
+    }
+    
+    public static function replace($key, $value)
     {
         self::$registry[$key] = $value;
         return true;
