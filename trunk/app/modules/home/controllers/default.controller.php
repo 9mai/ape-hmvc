@@ -32,7 +32,7 @@ Class Home_Default_Controller {
         
         // assign $data and load the view from modules/home/views/default.view.php
         // Loader::loadView(MODULE, VIEW, (array)$VARS);
-        $view = Loader::loadView('home','default',$data);
+        $view = Loader::loadView(Router::getProperty('module'),'default',$data);
         
         // simple assignment.
         // Note: use Registry class
@@ -41,11 +41,11 @@ Class Home_Default_Controller {
         // assign $content to a default layout
         // Loader::loadLayout(LAYOUT, (array)$VARS);
         $layout = Loader::loadLayout(
-            'default',
             array(
                 'view' => $view,
                 'content' => $content
-            )
+            ),
+            'default' /* default is the default. over-ride it here */
         );
 
         /* 

@@ -12,12 +12,14 @@ Abstract Class loadInterface {
 
 Abstract Class Loader Extends loadInterface {
 
-    public static function loadLayout($layout, $data=array())
+    public static function loadLayout($data = array(), $layout = 'default')
     {
         $file = APP_PATH.DS.'layouts'.DS.strtolower($layout).'.layout.php';
         if (file_exists($file)) {
             return self::getOutput($file, $data);
         }
+        
+        trigger_error('Layout: "'.$layout.'" could not be found.', E_USER_ERROR);
         return false;
     }
     
@@ -71,6 +73,7 @@ Abstract Class Loader Extends loadInterface {
             return self::getOutput($file, $data);
         }
         
+        trigger_error('View: "'.$view.'" could not be found.', E_USER_WARNING);
         return false;
     }
     
@@ -167,7 +170,7 @@ Abstract Class Loader Extends loadInterface {
             'content' => $content,
             'data' => $data
         );
-        return self::loadLayout('error', $data);
+        return self::loadLayout($data, 'error');
     }
     
     public static function getOutput($file, $data=array())
