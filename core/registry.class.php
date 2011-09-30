@@ -3,7 +3,7 @@
 Abstract Class registryInterface {
     abstract public static function &get($key);
     abstract public static function getAll();
-    abstract public static function add($key, &$value);
+    abstract public static function add($key, &$value, $replace);
     abstract public static function replace($key, &$value);
     abstract public static function remove($index);
     abstract public static function clear();
@@ -29,14 +29,14 @@ Abstract Class Registry extends registryInterface {
         return self::$registry;
     }
     
-    public static function add($key, $value, $replace = true)
+    public static function add($key, &$value, $replace = true)
     {
         if (self::exists($key) AND $replace == false) {
             trigger_error($key.' already set. Use replace method.', E_USER_WARNING);
             return false;
         }
 
-        self::$registry[$key] = $value;
+        self::$registry[$key] = &$value;
         return true;
     }
     
@@ -51,7 +51,7 @@ Abstract Class Registry extends registryInterface {
         return true;
     }
     
-    public static function replace($key, $value)
+    public static function replace($key, &$value)
     {
         self::$registry[$key] = $value;
         return true;
