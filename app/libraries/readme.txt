@@ -1,0 +1,1 @@
+This directory is used to store larger libraries like Zend, PEAR, HTMLPurifier, ADOdb and the like.

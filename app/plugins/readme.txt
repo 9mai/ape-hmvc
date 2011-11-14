@@ -1,0 +1,1 @@
+This directory is used to store everything from a simple single procedural function to your applications most often used "core" functionality.
