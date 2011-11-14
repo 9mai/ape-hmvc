@@ -25,6 +25,8 @@ define('ROOT_PATH', $root);
 define('CORE_PATH', ROOT_PATH.DS.'core');
 define('WWW_PATH', ROOT_PATH.DS.'html');
 define('APP_PATH', ROOT_PATH.DS.'app');
+
+set_include_path(get_include_path().PATH_SEPARATOR.APP_PATH.DS.'libraries');
 // defaults.
 define('DEFAULT_MODULE', 'home');
 define('DEFAULT_CONTROLLER', 'default');

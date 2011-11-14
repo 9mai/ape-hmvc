@@ -101,12 +101,7 @@ Abstract Class Loader Extends loadInterface {
             return false;
         }
     }
-    
-    public static function loadHelper($helper)
-    {
-        return self::loadFile(APP_PATH.DS.'helpers'.DS.strtolower($helper).'.helper.php');
-    }
-    
+        
     public static function loadPlugin($plugin)
     {
         return self::loadFile(APP_PATH.DS.'plugins'.DS.strtolower($plugin).'.plugin.php');
