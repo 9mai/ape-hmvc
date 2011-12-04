@@ -1,16 +1,6 @@
 <?php
 
-Abstract Class loadInterface {
-    abstract public static function loadLayout($layout, $data=array());
-    abstract public static function loadView($module, $view, $data=array());
-    abstract public static function loadModel($module, $model, $args=array());
-    abstract public static function loadConfig($file=null, $item=null);
-    abstract public static function loadFile($file,$require=true);
-    abstract public static function loadError($type='general', $data=array());
-    abstract public static function getOutput($file, $data=array());
-}
-
-Abstract Class Loader Extends loadInterface {
+Class Loader {
 
     public static function loadLayout($data = array(), $layout = 'default')
     {

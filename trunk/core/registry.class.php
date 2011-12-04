@@ -1,16 +1,6 @@
 <?php
 
-Abstract Class registryInterface {
-    abstract public static function get($key);
-    abstract public static function getAll();
-    abstract public static function add($key, $value, $replace);
-    abstract public static function replace($key, $value);
-    abstract public static function remove($index);
-    abstract public static function clear();
-    abstract public static function exists($key = null);
-}
-
-Abstract Class Registry extends registryInterface {
+Class Registry {
 
     private static $registry = array();
     

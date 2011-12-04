@@ -1,11 +1,6 @@
 <?php
 
-Abstract Class controlInterface {
-    abstract public function __construct();
-    abstract public function __toString();
-}
-
-Class Controller Extends controlInterface {
+Class Controller {
 
     private $output = null;
 
