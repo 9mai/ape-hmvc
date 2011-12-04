@@ -1,14 +1,6 @@
 <?php
 
-interface routeInterface {
-    public function __construct();
-    public static function &getInstance();
-    public static function getURI();
-    public static function getURL();
-    public static function getBaseURL();
-}
-
-Class Router implements routeInterface 
+Class Router 
 {
 
     private $module = DEFAULT_MODULE;
@@ -23,7 +15,7 @@ Class Router implements routeInterface
         if(function_exists('filter_var')) {
             $uri = filter_var($uri, FILTER_SANITIZE_URL);
         } else {
-            $uri = preg_replace("/([^a-z0-9+_(\x80-\xff)\/])/i",'',$uri);
+            $uri = preg_replace("/([^a-z0-9+_\-|(\x80-\xff)\/])/i",'',$uri);
         }
         
         if ($routes = Loader::loadConfig('routes')) {
@@ -63,7 +55,7 @@ Class Router implements routeInterface
         }
         $this->url['base_url'] = self::getBaseURL();
         $this->url['uri'] = implode('/', $this->url['params']);
-        if (strpos($this->url['uri'],'page') !== false) {
+        if (strpos($this->url['uri'], 'page') !== false) {
             if (preg_match("/page([0-9]+)/", $this->url['uri'], $match)) {
                 $this->url['page_num'] = (int)$match['1'];
             }
