@@ -20,13 +20,14 @@ if (LIVE === true) {
 // Define constants for file paths, url, etc.
 define('DS', DIRECTORY_SEPARATOR);
 $path_info = pathinfo(__FILE__);
-$root = rtrim($path_info['dirname'], DS.'html');
+$root = strstr($path_info['dirname'], DS.'html', true); // php 5.3.0+
 define('ROOT_PATH', $root);
 define('CORE_PATH', ROOT_PATH.DS.'core');
 define('WWW_PATH', ROOT_PATH.DS.'html');
 define('APP_PATH', ROOT_PATH.DS.'app');
 
 set_include_path(get_include_path().PATH_SEPARATOR.APP_PATH.DS.'libraries');
+
 // defaults.
 define('DEFAULT_MODULE', 'home');
 define('DEFAULT_CONTROLLER', 'default');
