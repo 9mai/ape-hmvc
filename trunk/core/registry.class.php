@@ -21,7 +21,7 @@ Class Registry {
     
     public static function add($key, $value, $replace = true)
     {
-        if (self::exists($key) AND $replace == false) {
+        if (self::exists($key) AND $replace === false) {
             trigger_error($key.' already set. Use replace method.', E_USER_WARNING);
             return false;
         }
