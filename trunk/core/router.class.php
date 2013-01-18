@@ -87,12 +87,30 @@ Class Router
     }
     
     public static function getURI()
-    {        
-        return (
-            self::getVar('PATH_INFO', 'server') ? 
-            self::getVar('PATH_INFO', 'server') :
-            '/'.DEFAULT_MODULE
-        );
+    {    
+        if(self::getVar('PATH_INFO', 'server', false)){
+            $uri = self::getVar('PATH_INFO', 'server', false);
+        } elseif(self::getVar('REQUEST_URI', 'server', false)){
+            $uri = self::getVar('REQUEST_URI', 'server', false);
+        }
+
+        $uri = explode('/', $uri);
+        foreach (explode('/', WWW_PATH) as $val) {
+            if ($key = array_search($val, $uri)) {
+                unset($uri[$key]);
+            }
+        }
+        
+        $uri = array_filter($uri);
+        ksort($uri);
+        
+        if (!$uri) {
+            $uri = array(DEFAULT_MODULE);
+        }
+        
+        $uri = '/'.implode('/', $uri);
+
+        return $uri;
     }
     
     public static function getURL()
