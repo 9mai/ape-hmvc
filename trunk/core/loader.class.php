@@ -137,13 +137,14 @@ Class Loader {
     
     public static function loadError($type='general', $data=array())
     {
+        $msg = '';
         if ((int)$type > 0) {
             switch($type) {
                 case '401': $msg = '401 Access Denied'; break;
                 case '404': $msg = '404 Not Found'; break;
                 case '500': $msg = '500 Internal Server Error'; break;
             }
-            if (isset($msg)) {
+            if (!empty($msg)) {
                 header('HTTP/1.1 '.$msg);
                 header('Status: '.$msg);
             }
@@ -166,7 +167,7 @@ Class Loader {
         
         ob_start();
         if (is_array($data)) {
-            extract($data); // I don't like this. could produce undeclared errors. set in registry?
+            extract($data); // yuck. could produce undeclared errors. set in registry?
         }
         include($file);
         $return = ob_get_contents();
