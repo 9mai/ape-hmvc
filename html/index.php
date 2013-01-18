@@ -21,6 +21,7 @@ if (LIVE === true) {
 define('DS', DIRECTORY_SEPARATOR);
 $path_info = pathinfo(__FILE__);
 $root = strstr($path_info['dirname'], DS.'html', true); // php 5.3.0+
+// $root = preg_replace("#".DS."html$#", "", $path_info['dirname']); // alternative
 define('ROOT_PATH', $root);
 define('CORE_PATH', ROOT_PATH.DS.'core');
 define('WWW_PATH', ROOT_PATH.DS.'html');
