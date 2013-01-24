@@ -12,11 +12,17 @@ Class Controller {
         $controller_file = APP_PATH.'/modules/'.$module
                       .'/controllers/'.$controller.'.controller.php';
         if (!file_exists($controller_file)) {
-            $data = array(
-                'message' => $module.'::'.$controller.' not found.'
-            );
-            return ($this->output = Loader::loadError('404', $data));
+            $controller = DEFAULT_CONTROLLER;
+            $controller_file = APP_PATH.'/modules/'.$module
+                      .'/controllers/'.$controller.'.controller.php';
+            if (!file_exists($controller_file)) {
+                $data = array(
+                    'message' => $module.'::'.$controller.' not found.'
+                );
+                return ($this->output = Loader::loadError('404', $data));
+            }
         }
+
         // require it.
         require($controller_file);
 
@@ -25,22 +31,21 @@ Class Controller {
                 .ucfirst($controller).'_'
                 .'Controller';
         $method = Router::getProperty('method');
-        
         if (!class_exists($class)) {
             $data = array(
                 'message' => $class.' does not exist'
             );
             return ($this->output = Loader::loadError('404', $data));
         }
-        
-        $class_methods = array_map('strtolower', get_class_methods($class));        
+
+        $class_methods = array_map('strtolower', get_class_methods($class));   
         if (!in_array($method, $class_methods) AND !in_array('__call', $class_methods)) {
             $data = array(
                 'message' => '"'.$method.'" not found in '.$class.'.'
             );
             return ($this->output = Loader::loadError('404', $data));
         }
-        
+
         // create it, barf if necessary.
         try {
             $c = new $class();
@@ -74,7 +79,7 @@ Class Controller {
         
         // call method, pass url segments as arguments.
         $url = Router::getProperty('url');
-        $params = array_slice($url['params'], 3);
+        $params = array_slice($url['params'], 2);
         if ($params) {
             $this->output = call_user_func_array(
                 array(&$c, $method), 
