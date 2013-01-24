@@ -47,11 +47,11 @@ Class Router
         if (isset($path_parts[($key)])) {
             $this->url['params'] = array_slice($path_parts, ($key ));
         }
-        if (isset($this->url['params']['1'])) {
-            $this->controller = $this->url['params']['1'];
+        if (isset($this->url['params']['0'])) {
+            $this->controller = $this->url['params']['0'];
         }
-        if (isset($this->url['params']['2'])) {
-            $this->method = $this->url['params']['2'];
+        if (isset($this->url['params']['1'])) {
+            $this->method = $this->url['params']['1'];
         }
         $this->url['base_url'] = self::getBaseURL();
         $this->url['uri'] = implode('/', $this->url['params']);
@@ -60,6 +60,7 @@ Class Router
                 $this->url['page_num'] = (int)$match['1'];
             }
         }
+
         self::$instance = $this;
     }
     
