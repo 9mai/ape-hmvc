@@ -1,0 +1,3 @@
+The goals of this framework are very simple. Provide a "no-frills" HMVC framework that enables it's users to decide what they want to use for sessions, database connectivity, etc. The framework provides a modular layout, simple loading of libraries, helpers, plugins, regex style routing, flexible layout assignments and more. What you get is a bare bones fast, light, super flexible, bloat free framework that works the way you want it to.
+
+There are no docs yet. I'd welcome any contributions.
